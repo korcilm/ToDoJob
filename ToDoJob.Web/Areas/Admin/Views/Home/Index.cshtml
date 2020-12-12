@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="white-panel pn mt-2">
+            <div class="white-header">
+                <h5>Okunmamış Bildirim Sayısı</h5>
+            </div>
+            @if (ViewBag.UnreadNotification > 0)
+            {
+                <p style="font-size:xx-large">@ViewBag.UnreadNotification</p>
+            }
+            else
+            {
+                <p class="card-text">Yeni bildiriminiz yok</p>
+            }
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="small mt">
+                        <a asp-action="Index" asp-controller="Notification" class="btn btn-info text-center">
+                            <i class="fas fa-chevron-circle-right mr-2"></i>
+                            İncele
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="white-panel pn mt-2">
+            <div class="white-header">
+                <h5>Atanmayı Bekleyen Görev Sayısı</h5>
+            </div>
+            @if (ViewBag.AtanmayanJob > 0)
+            {
+                <p style="font-size:xx-large">@ViewBag.AtanmayanJob</p>
+            }
+            else
+            {
+                <p class="card-text">Atanmayı bekleyen görev yoktur</p>
+            }
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="small mt">
+                        <a asp-action="Index" asp-controller="IsEmri" class="btn btn-info text-center">
+                            <i class="fas fa-chevron-circle-right mr-2"></i>
+                            İncele
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="white-panel pn mt-2">
+            <div class="white-header">
+                <h5>Toplam Yazılan Rapor Sayısı</h5>
+            </div>
+            @if (ViewBag.TotalRaporCount > 0)
+            {
+
+                <p style="font-size:xx-large"> @ViewBag.TotalRaporCount</p>
+            }
+            else
+            {
+                <p class="card-text">Herhangi bir rapor yazılmamış</p>
+            }
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="white-panel pn mt-2">
+            <div class="white-header">
+                <h5>Tamamlanan Görev Sayısı</h5>
+            </div>
+            @if (ViewBag.CompletedJob > 0)
+            {
+                <p style="font-size:xx-large">  @ViewBag.CompletedJob</p>
+            }
+            else
+            {
+                <p class="card-text">Tamamlanan görev bulunmuyor</p>
+            }
+        </div>
+    </div>
+
+</div>

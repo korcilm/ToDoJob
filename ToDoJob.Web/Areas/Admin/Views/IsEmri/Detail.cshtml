@@ -1,0 +1,53 @@
+﻿@model JobAllListDto
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (Model.Raporlar.Count > 0)
+{
+    <div class="row mt">
+        <div class="col-md-12">
+            <div class="content-panel">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h4><i class="fa fa-angle-right"></i> @Model.AppUser.Name  @Model.AppUser.SurName personelinizin @Model.Name görevine yazmış olduğu raporlar</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <a asp-action="GetExcel" asp-route-id="@Model.Id" target="_blank" class="btn btn-success mt-2 mb-2 btn-sm"><i class="far fa-file-excel mr-2"></i>Excel</a>
+                        <a asp-action="GetPdf" asp-route-id="@Model.Id" target="_blank" class="btn btn-danger mt-2 mb-2 btn-sm"><i class="far fa-file-pdf mr-2"></i>Pdf</a>
+                    </div>
+                </div>
+                <table class="table table-striped table-advance table-hover">
+
+                    <thead>
+                        <tr>
+                            <th><i class="fa fa-question-circle"></i> Tanım</th>
+                            <th> Detay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var rapor in Model.Raporlar)
+                        {
+                            <tr>
+                                <td>@rapor.Description</td>
+                                <td>@rapor.Detail</td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-md-12">
+        <h4>
+            <i class="fa fa-angle-right"></i>@Model.AppUser.Name  @Model.AppUser.SurName personeliniz şuan da @Model.Name görevi üzerinde çalışıyor.
+            Henüz bir rapor yazmamış.
+        </h4>
+    </div>
+
+}

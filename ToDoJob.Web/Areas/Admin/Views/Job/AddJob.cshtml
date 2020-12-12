@@ -1,0 +1,50 @@
+﻿@model AddJobDto
+@{
+    ViewData["Title"] = "AddJob";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="form-panel">
+    <h4><i class="fa fa-angle-right"></i> Görev Ekle</h4>
+    <hr />
+    <form role="form" asp-action="AddJob" method="post" class="form-horizontal style-form">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Görev Adı : </label>
+            <div class="col-lg-10">
+                <input type="text" asp-for="Name" id="f-name" class="form-control">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Açıklama : </label>
+            <div class="col-lg-10">
+                <input type="text" asp-for="Description" id="f-name" class="form-control">
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Aciliyet Durumu Seçiniz : </label>
+            <div class="col-lg-10">
+                <select asp-for="AciliyetId" class="form-control" asp-items="ViewBag.Aciliyetler">
+                    <option hidden value="-1">Seçiniz</option>
+                </select>
+                <span asp-validation-for="AciliyetId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button class="btn btn-theme" type="submit">Kaydet</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- /form-panel -->
+
+
+@section JavaScript
+{
+    <script src="~/lib/jqueryValidate/jquery.validate.min.js"></script>
+    <script src="~/lib/jqueryUnob/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,75 @@
+﻿@model AppUserListDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
+}
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        @TempData["message"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<form asp-action="Index" class="w-75 mx-auto p-3" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Name">Ad :</label>
+        <span asp-validation-for="Name" class="text-danger"></span>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="SurName">Soyad :</label>
+        <span asp-validation-for="SurName" class="text-danger"></span>
+        <input type="text" asp-for="SurName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Email :</label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <input type="text" asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                Profil Fotoğrafınız
+                <div class="w-50 p-3">
+                    <img src="/img/@Model.Picture" class="card-img " alt="@Model.Name">
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div id="alanOnizleme" style="display: none !important;">
+                    Seçtiğiniz profil fotoğrafı
+                    <div class="w-50 p-3">
+                        <img id="resimOnizleme" src="" class="card-img ">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                        <input type="file" name="resim" class="custom-file-input" id="resim" aria-describedby="resim">
+                        <label class="custom-file-label" for="resim">Resim Seç</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-info btn-sm">Kaydet</button>
+</form>
+
+@section JavaScript
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#resim").change(function (e) {
+                $("#alanOnizleme").show();
+                $("#resimOnizleme").attr('src', URL.createObjectURL(e.target.files[0]));
+            });
+        });
+    </script>
+}

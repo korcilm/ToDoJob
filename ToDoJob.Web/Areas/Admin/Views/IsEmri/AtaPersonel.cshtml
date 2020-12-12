@@ -1,0 +1,87 @@
+﻿@model JobListDto
+
+@{
+    ViewData["Title"] = "AtaPersonel";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    string s = (string)ViewBag.Searching;
+}
+
+<div class="row mt-2">
+    <div class="col-md-12 mb-2">
+
+        @if (!string.IsNullOrWhiteSpace(s))
+        {
+            <div class="border border-dark p-3 mb-2">
+                <strong> @s </strong>kelimesi için sonuçları görüyorsunuz.
+                <a asp-action="AtaPersonel" class="float-right" asp-route-id="@Model.Id"><i class="fas fa-times mr-2"></i></a>
+            </div>
+        }
+
+
+        <form method="get" asp-action="AtaPersonel" class="text-right">
+            <input type="text" name="s" class="form-control-md border border-primary border-left-0 border-right-0 border-top-0 " />
+            <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-search mr-2"></i>Ara</button>
+        </form>
+    </div>
+
+    <div class="col-md-4 col-sm-4 mb-2">
+        <!-- REVENUE PANEL -->
+        <div class="green-panel pn">
+            <div class="green-header">
+                <h5>Görev Bilgileri</h5>
+            </div>
+            <h5><b>@Model.Name</b> <span class="label label-warning label-mini">@Model.Aciliyet.Description</span> </h5>
+            <p>@Model.Description</p>
+            <p class="mt"> @Model.CreateDate.ToString("D")</p>
+        </div>
+    </div>
+
+
+    <div class="col-md-8">
+        @foreach (var item in (List<AppUserListDto>)ViewBag.Personeller)
+        {
+            <div class="message-p pn">
+                <div class="message-header">
+                    <h5>@item.Name @item.SurName</h5>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-2 centered hidden-sm hidden-xs">
+                        <img src="/img/@item.Picture" class="img-circle" width="80" alt="@item.Name">
+                    </div>
+                    <div class="col-md-9">
+                        <p class="message"> <getJobAppUserId app-user-id="@item.Id"> </getJobAppUserId></p>
+                        <p class="small">@item.Email</p>
+                        <a asp-action="GorevlendirPersonel" asp-route-PersonelId="@item.Id" asp-route-JobId="@Model.Id" class="btn btn-theme btn-sm float-right">
+                            <i class="fas fa-check mr-2"></i>
+                            Görevlendir
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+
+                @if (!string.IsNullOrWhiteSpace(s))
+                {
+                    for (int i = 1; i <= ViewBag.TotalPage; i++)
+                    {
+                        <li class="page-item @(ViewBag.ActivePage == i ? " active" : "")">
+                            <a class="page-link" asp-action="AtaPersonel" asp-route-id="@Model.Id" asp-route-page="@i" asp-route-s="@s">@i</a>
+                        </li>
+                    }
+                }
+                else
+                {
+                    for (int i = 1; i <= ViewBag.TotalPage; i++)
+                    {
+                        <li class="page-item @(ViewBag.ActivePage == i ? " active" : "")">
+                            <a class="page-link " asp-action="AtaPersonel" asp-route-id="@Model.Id" asp-route-page="@i">@i</a>
+                        </li>
+                    }
+                }
+
+            </ul>
+        </nav>
+    </div>
+</div>

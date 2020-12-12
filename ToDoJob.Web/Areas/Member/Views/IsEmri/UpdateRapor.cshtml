@@ -1,0 +1,39 @@
+﻿@model UpdateRaporDto
+@{
+    ViewData["Title"] = "UpdateRapor";
+    Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
+}
+
+<div class="card mt-2">
+    <div class="card-header">
+        <p>@Model.Job.Name  <span class="badge badge-info">@Model.Job.Aciliyet.Description</span></p>
+        <p>@Model.Job.Description</p>
+    </div>
+    <div class="card-body">
+        <form method="post" asp-action="UpdateRapor" class="w-75 mx-auto p-3">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <span asp-validation-for="Description" class="text-danger"></span>
+                <input asp-for="Description" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Detail"></label>
+                <span asp-validation-for="Detail" class="text-danger"></span>
+                <textarea asp-for="Detail" class="form-control"> </textarea>
+            </div>
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-warning btn-sm"><i class="fas fa-chevron-circle-left mr-2"></i>Vazgeç</a>
+                <button type="submit" class="btn btn-info btn-sm">Kaydet</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+@section JavaScript
+{
+    <script src="~/lib/jqueryValidate/jquery.validate.min.js"></script>
+    <script src="~/lib/jqueryUnob/jquery.validate.unobtrusive.min.js"></script>
+}

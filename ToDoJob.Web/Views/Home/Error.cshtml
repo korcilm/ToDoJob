@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Error";
+    Layout = "~/Views/Shared/_StandartLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <img src="~/img/Button-Close-icon.png" />
+        </div>
+        <div class="col-md-8">
+            <h2>Hatanın gerçekleştiği yer : @ViewBag.Path</h2> <br />
+            <h4>Hata Mesajı : @ViewBag.Message</h4>
+        </div>
+    </div>
+</div>

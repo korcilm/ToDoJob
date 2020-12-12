@@ -1,0 +1,60 @@
+﻿@model List<JobAllListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
+    int index = 0;
+}
+
+@foreach (var job in Model)
+{
+    index++;
+    <div class="card my-2">
+        <div class="card-header">
+            @job.Name
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><span class="text-danger">Aciliyet Durumu : </span> @job.Aciliyet.Description</h5>
+            <p class="card-text"> @job.Description</p>
+
+            <p class="text-right">
+                @if (job.Raporlar.Count > 0)
+                {
+                    <a class="btn btn-secondary btn-sm" data-toggle="collapse" href="#collapseExample-@index" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Raporlara Git <i class="fas fa-caret-down ml-2"></i>
+                        <span class="badge badge-info"> @job.Raporlar.Count</span>
+                    </a>
+                }
+
+
+            </p>
+            <div class="collapse" id="collapseExample-@index">
+                <table class="table table-hover table-bordered table-sm">
+                    <tr>
+                        <th>Ad</th>
+                        <th>Tanım</th>
+                    </tr>
+                    @foreach (var item in @job.Raporlar)
+                    {
+                        <tr>
+                            <td>@item.Description</td>
+                            <td>@item.Detail</td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+}
+
+<nav aria-label="Page navigation example" class="float-right">
+    <ul class="pagination">
+        @for (int i = 1; i <= ViewBag.TotalPage; i++)
+        {
+            <li class="page-item @(ViewBag.ActivePage==i?"active":"")">
+                <a class="page-link" asp-action="Index" asp-route-activePage="@i">@i</a>
+            </li>
+        }
+    </ul>
+</nav>

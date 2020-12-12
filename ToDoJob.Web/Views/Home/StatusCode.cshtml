@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "StatusCode";
+    Layout = "~/Views/Shared/_StandartLayout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <img src="~/img/404.jpg" class="w-100" />
+        </div>
+        <div class="col-md-6">
+            <h2 > @ViewBag.Code</h2> <br />
+            <h4> @ViewBag.Message</h4>
+        </div>
+    </div>
+</div>

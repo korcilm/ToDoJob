@@ -1,0 +1,81 @@
+﻿@model AppUserListDto
+
+@{ string active = string.Empty;
+    if (TempData["Active"] != null)
+    {
+        active = TempData["Active"].ToString();
+    }
+}
+
+
+<!--sidebar start-->
+<aside>
+    <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+            <li >
+                <p class="centered"><a href="profile.html"><img src="/img/@Model.Picture" class="img-circle" width="80" alt="@Model.Name"></a></p>
+                <h5 class="centered">Sam Soffes</h5>
+            </li>
+            <li class="mt">
+                <a asp-action="Index" asp-controller="Home" class=" @(active=="home"?"active":" ")">
+                    <i class="fas fa-home mr-2"></i>
+                    <span>Anasayfa</span>
+                </a>
+            </li>
+
+            <li>
+                <a asp-controller="Job" asp-action="Index" class=" @(active=="job"?"active":" ")">
+                    <i class="fas fa-tasks mr-2"></i>
+                    <span>Görev İşlemleri</span>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Aciliyet" asp-action="Index" class=" @(active=="aciliyet"?"active":" ")">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span>Aciliyet İşlemleri</span>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="IsEmri" asp-action="Index" class=" @(active=="isemri"?"active":" ")">
+                    <i class="fas fa-file-signature mr-2"></i>
+                    <span>İş Emirleri</span>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Graphic" asp-action="Index" class=" @(active=="graphic"?"active":" ")">
+                    <i class="fas fa-chart-pie mr-2"></i>
+                    <span>Grafikler</span>
+                </a>
+            </li>
+            <li class="">
+                <a asp-controller="Notification" asp-action="Index" class=" @(active=="notification"?"active":" ")">
+                    <i class="far fa-bell mr-2"></i>
+                    @if (ViewBag.Notifications > 0)
+                    {
+                        <sub class="badge badge-info badge-pill position-absolute " style="bottom:0.625rem!important;left:1.7rem!important;">
+                            <small>@ViewBag.Notifications</small>
+                        </sub>
+                    }
+                    <span>Bildirimler</span>
+                </a>
+            </li>
+            <li class="">
+                <a asp-controller="Profile" asp-action="Index" class="  @(active=="profil"?"active":" ")">
+                    <i class="far fa-user mr-2"></i>
+                    <span>Profilim</span>
+                </a>
+            </li>
+
+            <li class="">
+                <a asp-area="" asp-action="SignOut" asp-controller="Home">
+                    <i class="fas fa-sign-out-alt mr-2"></i>
+                    <span>Çıkış Yap</span>
+                </a>
+            </li>
+
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+<!--sidebar end-->

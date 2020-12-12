@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-6 col-sm-6 mb">
+        <div class="darkblue-panel pn">
+            <div class="darkblue-header">
+                <h5>Tamamlanan İşler</h5>
+            </div>
+            <div id="piechart_3d" ></div>
+
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 mb">
+        <div class="darkblue-panel pn">
+            <div class="darkblue-header">
+                <h5>Aktif İşler</h5>
+            </div>
+            <div id="piechart_3d1"></div>
+
+        </div>
+    </div>
+  
+</div>
+    @section JavaScript{
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+
+            google.charts.load("current", { packages: ["corechart"] });
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+
+                let mostCompletedJob = [['Personel Adı', 'Görev Sayısı']];
+
+                $.ajax({
+                    type: "Get",
+                    url: "./Graphic/MostCompletedJob",
+                    async: false,
+                    success: function (data) {
+                        let gelenObje = jQuery.parseJSON(data);
+                        $.each(gelenObje, (index, value) => {
+                            mostCompletedJob.push([value.Name, value.JobCount])
+                        });
+                    }
+                })
+
+                var data = google.visualization.arrayToDataTable(mostCompletedJob);
+
+                var options = {
+                    title: 'En Çok İş Tamamlayan Personeller',
+                    is3D: true,
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+                chart.draw(data, options);
+            }
+
+            google.charts.load("current", { packages: ["corechart"] });
+            google.charts.setOnLoadCallback(drawChart2);
+            function drawChart2() {
+
+                let mostAtananJob = [['Personel Adı', 'Görev Sayısı']];
+
+                $.ajax({
+                    type: "Get",
+                    url: "./Graphic/MostAtananJob",
+                    async: false,
+                    success: function (data) {
+                        let gelenObje2 = jQuery.parseJSON(data);
+                        $.each(gelenObje2, (index, value) => {
+                            mostAtananJob.push([value.Name, value.JobCount])
+                        });
+                    }
+                })
+
+                var data = google.visualization.arrayToDataTable(mostAtananJob);
+
+                var options = {
+                    title: 'Şuan Görevde Çalışan Personeller',
+                    is3D: true,
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart_3d1'));
+                chart.draw(data, options);
+            }
+        </script>
+    }
+
