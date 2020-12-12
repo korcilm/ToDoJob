@@ -26,7 +26,6 @@ namespace ToDoJob.Web.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-
             TempData["Active"] = TempdataInfo.Job;
             return View(_mapper.Map<List<JobListDto>>(_jobService.GetByIdWithAciliyet()));
         }
