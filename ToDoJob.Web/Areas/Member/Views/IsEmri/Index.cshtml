@@ -8,53 +8,60 @@
 @foreach (var job in Model)
 {
     index++;
-    <div class="card my-2">
-        <div class="card-header">
-            @job.Name
-        </div>
-        <div class="card-body">
-            <h5 class="card-title"><span class="text-danger">Aciliyet Durumu : </span> @job.Aciliyet.Description</h5>
-            <p class="card-text"> @job.Description</p>
-            
-            <p class="text-right">
-                @if (job.Raporlar.Count>0)
-                {
-                    <a class="btn btn-secondary btn-sm" data-toggle="collapse" href="#collapseExample-@index" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        Raporlara Git <i class="fas fa-caret-down ml-2"></i>
-                        <span class="badge badge-info"> @job.Raporlar.Count</span>
-                    </a>
-                }
-                else
-                {
-                    <span class="text-left text-danger my-1 d-block">Rapor bulunmamaktadır. Görevinizdeki ilerlemeden bahsedin.</span>
-                    <a asp-action="AddRapor" asp-route-id="@job.Id" class="btn btn-secondary btn-sm">Rapor Yaz</a>
-                }
+    <div class="mb-2">
+        <div class="green-panel pn">
+            <div class="green-header">
+                <b>@job.Name</b>
+            </div>
+            <div>
+                <h5>Aciliyet Durumu :<span class="label label-warning label-mini">@job.Aciliyet.Description </span> </h5>
+                <p> @job.Description</p>
 
-                <a href="" data-id="@job.Id" data-toggle="modal" data-target="#exampleModal" class="btn btn-success btn-sm">
-                    Tamamlandı Olarak İşaretle
-                </a>
-
-            </p>
-            <div class="collapse" id="collapseExample-@index">
-                <a asp-action="AddRapor" asp-route-id="@job.Id" class="btn btn-secondary btn-sm">Rapor Yaz</a>
-                <table class="table table-hover table-bordered table-sm">
-                    <tr>
-                        <th>Ad</th>
-                        <th>Tanım</th>
-                        <th>İşlem</th>
-                    </tr>
-                    @foreach (var item in @job.Raporlar)
+                <p class="text-center">
+                    @if (job.Raporlar.Count > 0)
                     {
-                        <tr>
-                            <td>@item.Description</td>
-                            <td>@item.Detail</td>
-                            <td><a asp-action="UpdateRapor" asp-route-id="@item.Id" class="btn btn-warning">Düzenle</a> </td>
-                        </tr>
+                        <a class="btn btn-danger btn-sm mb-2" data-toggle="collapse" href="#collapseExample-@index" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            Raporlara Git <i class="fas fa-caret-down ml-2"></i>
+                            <span class="badge badge-info"> @job.Raporlar.Count</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <span class="text-left text-danger my-1 d-block">Rapor bulunmamaktadır. Görevinizdeki ilerlemeden bahsedin.</span>
+                        <a asp-action="AddRapor" asp-route-id="@job.Id" class="btn btn-danger btn-sm mb-2">Rapor Yaz</a>
                     }
 
-                </table>
-            </div>
+                    <a href="" data-id="@job.Id" data-toggle="modal" data-target="#exampleModal" class="btn btn-success btn-sm mb-2">
+                        Tamamlandı Olarak İşaretle
+                    </a>
 
+                </p>
+                <div class="collapse" id="collapseExample-@index">
+                    <table class="table table-striped table-advance table-hover">
+                        <thead>
+                            <tr>
+                                <th><i class="fa fa-bullhorn"></i> Tanım</th>
+                                <th><i class="fa fa-question-circle"></i> Detay</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in @job.Raporlar)
+                        {
+                            <tbody>
+                                <tr>
+                                    <td class="text-left">@item.Description</td>
+                                    <td class="text-left">@item.Detail</td>
+                                    <td>
+                                        <a asp-action="UpdateRapor" asp-route-id="@item.Id" class="btn btn-warning btn-sm"><i class="far fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        }
+
+                    </table>
+                    <a asp-action="AddRapor" asp-route-id="@job.Id" class="btn btn-danger float-right mr-2 mb-1 btn-sm">Rapor Yaz</a>
+                </div>
+            </div>
         </div>
     </div>
 }
@@ -64,7 +71,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">UYARI</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -83,20 +90,20 @@
 @section JavaScript
 {
     <script type="text/javascript">
-        $(document).ready(function() {
-            $("#exampleModal").on("show.bs.modal",function(event) {
+        $(document).ready(function () {
+            $("#exampleModal").on("show.bs.modal", function (event) {
                 let tetikleyenElement = $(event.relatedTarget);
                 let data = tetikleyenElement.data("id");
-                $("#btnSave").click(function() {
+                $("#btnSave").click(function () {
                     $.ajax({
                         type: "GET",
                         contentType: "application/json; charset=utf-8",
                         url: "./IsEmri/CompleteJob",
                         data: { jobId: data },
-                        success: function() {
+                        success: function () {
                             window.location.reload();
                         },
-                        error: function(error) {
+                        error: function (error) {
                             alert(error.responseText);
                         }
                     });

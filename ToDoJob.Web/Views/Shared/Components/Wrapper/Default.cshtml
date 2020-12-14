@@ -13,7 +13,7 @@
     <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-            <li >
+            <li>
                 <p class="centered"><a href="profile.html"><img src="/img/@Model.Picture" class="img-circle" width="80" alt="@Model.Name"></a></p>
                 <h5 class="centered">Sam Soffes</h5>
             </li>
@@ -48,18 +48,17 @@
                     <span>Grafikler</span>
                 </a>
             </li>
-            <li class="">
+            <li>
                 <a asp-controller="Notification" asp-action="Index" class=" @(active=="notification"?"active":" ")">
-                    <i class="far fa-bell mr-2"></i>
+                    <i class="fa fa-envelope"></i>
+                    <span>Bildirimler </span>
                     @if (ViewBag.Notifications > 0)
                     {
-                        <sub class="badge badge-info badge-pill position-absolute " style="bottom:0.625rem!important;left:1.7rem!important;">
-                            <small>@ViewBag.Notifications</small>
-                        </sub>
+                        <span class="label label-theme pull-right mail-info">@ViewBag.Notifications</span>
                     }
-                    <span>Bildirimler</span>
                 </a>
             </li>
+           
             <li class="">
                 <a asp-controller="Profile" asp-action="Index" class="  @(active=="profil"?"active":" ")">
                     <i class="far fa-user mr-2"></i>

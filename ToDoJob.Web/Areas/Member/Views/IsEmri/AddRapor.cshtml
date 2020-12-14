@@ -4,9 +4,8 @@
     Layout = "~/Areas/Member/Views/Shared/_MemberLayout.cshtml";
 }
 
-
 <div class="card mt-2">
-    <div class="card-header">
+    <div class="card-header bg-theme">
         <p>@Model.Job.Name  <span class="badge badge-info">@Model.Job.Aciliyet.Description</span></p> 
         <p>@Model.Job.Description</p>
     </div>
@@ -31,7 +30,6 @@
         </form>
     </div>
 </div>
-
 
 @section JavaScript
 {

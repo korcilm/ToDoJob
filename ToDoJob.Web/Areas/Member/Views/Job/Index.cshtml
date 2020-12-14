@@ -9,7 +9,7 @@
 {
     index++;
     <div class="card my-2">
-        <div class="card-header">
+        <div class="card-header bg-theme">
             @job.Name
         </div>
         <div class="card-body">
@@ -28,17 +28,21 @@
 
             </p>
             <div class="collapse" id="collapseExample-@index">
-                <table class="table table-hover table-bordered table-sm">
-                    <tr>
-                        <th>Ad</th>
-                        <th>Tanım</th>
-                    </tr>
+                <table class="table table-striped table-advance table-hover">
+                    <thead>
+                        <tr>
+                            <th><i class="fa fa-bullhorn"></i> Tanım</th>
+                            <th><i class="fa fa-question-circle"></i> Detay</th>
+                        </tr>
+                    </thead>
                     @foreach (var item in @job.Raporlar)
                     {
-                        <tr>
-                            <td>@item.Description</td>
-                            <td>@item.Detail</td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td class="text-left">@item.Description</td>
+                                <td class="text-left">@item.Detail</td>
+                            </tr>
+                        </tbody>
                     }
 
                 </table>

@@ -14,53 +14,72 @@
     </div>
 }
 
-<form asp-action="Index" class="w-75 mx-auto p-3" method="post" enctype="multipart/form-data">
-    <input type="hidden" asp-for="Id" />
-    <div class="form-group">
-        <label asp-for="Name">Ad :</label>
-        <span asp-validation-for="Name" class="text-danger"></span>
-        <input type="text" asp-for="Name" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="SurName">Soyad :</label>
-        <span asp-validation-for="SurName" class="text-danger"></span>
-        <input type="text" asp-for="SurName" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Email">Email :</label>
-        <span asp-validation-for="Email" class="text-danger"></span>
-        <input type="text" asp-for="Email" class="form-control" />
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-4">
-                Profil Fotoğrafınız
-                <div class="w-50 p-3">
-                    <img src="/img/@Model.Picture" class="card-img " alt="@Model.Name">
-                </div>
-            </div>
+<div class="row mt">
+    <div class="col-lg-12">
 
-            <div class="col-md-8">
-                <div id="alanOnizleme" style="display: none !important;">
-                    Seçtiğiniz profil fotoğrafı
-                    <div class="w-50 p-3">
-                        <img id="resimOnizleme" src="" class="card-img ">
+        <div class="form-panel">
+            <h4><i class="fa fa-angle-right"></i> Profil</h4>
+            <hr />
+            <form asp-action="Index" class="form-horizontal style-form" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Ad : </label>
+                    <div class="col-lg-10">
+                        <input type="text" asp-for="Name" id="f-name" class="form-control">
+                        <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="input-group mb-3">
-                    <div class="custom-file">
-                        <input type="file" name="resim" class="custom-file-input" id="resim" aria-describedby="resim">
-                        <label class="custom-file-label" for="resim">Resim Seç</label>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Soyad : </label>
+                    <div class="col-lg-10">
+                        <input type="text" asp-for="SurName" id="f-name" class="form-control">
+                        <span asp-validation-for="SurName" class="text-danger"></span>
                     </div>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Email : </label>
+                    <div class="col-lg-10">
+                        <input type="text" asp-for="Email" id="f-name" class="form-control">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group last">
+                    <label class="control-label col-md-3">Resim Yükleme</label>
+
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            Profil Fotoğrafınız
+                            <div class="w-50 p-3">
+                                <img src="/img/@Model.Picture" class="card-img " alt="@Model.Name">
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 form-group">
+                            <div id="alanOnizleme" style="display: none !important;">
+                                Seçtiğiniz profil fotoğrafı
+                                <div class="w-50 p-3">
+                                    <img id="resimOnizleme" src="" class="card-img ">
+                                </div>
+                            </div>
+
+                            <div class="custom-file" style="max-width:400px;">
+                                <input type="file" name="resim" class="custom-file-input" id="resim" aria-describedby="resim">
+                                <label class="custom-file-label" for="resim">Resim Seç</label>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-info btn-sm">Kaydet</button>
+            </form>
         </div>
+        <!-- /form-panel -->
     </div>
-    <button type="submit" class="btn btn-info btn-sm">Kaydet</button>
-</form>
+</div>
 
 @section JavaScript
 {
