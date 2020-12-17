@@ -14,8 +14,8 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
             <li>
-                <p class="centered"><a href="profile.html"><img src="/img/@Model.Picture" class="img-circle" width="80" alt="@Model.Name"></a></p>
-                <h5 class="centered">Sam Soffes</h5>
+                <p class="centered"><a href="profile.html"><img src="/img/@Model.Picture" class="img-circle" width="100" alt="@Model.Name"></a></p>
+                <h5 class="centered">@Model.Name @Model.SurName</h5>
             </li>
             <li class="mt">
                 <a asp-action="Index" asp-controller="Home" class=" @(active=="home"?"active":" ")">
