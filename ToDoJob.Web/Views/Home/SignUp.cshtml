@@ -4,43 +4,55 @@
     Layout = "~/Views/Shared/_StandartLayout.cshtml";
 }
 
+<div class="mt-4 mx-auto w-50 rounded-top rounded-bottom">
+    <div class="rounded" style="background-color: #008080;">
+        <h3 class="text-center p-3 text-white">Kaydol</h3>
+    </div>
+    <form asp-action="SignUp" class="mx-auto p-3 shadow rounded-bottom" method="post">
 
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" asp-for="Name" class="form__input" placeholder="Ad" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" asp-for="SurName" class="form__input" placeholder="Soyad" />
+                    <span asp-validation-for="SurName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="text" asp-for="UserName" class="form__input" placeholder="Kullanıcı adı" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="password" asp-for="Password" class="form__input" placeholder="Parola" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="password" asp-for="ConfirmPassword" class="form__input" placeholder="Parola onayı" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
 
-<form asp-action="SignUp" class="mt-4 mx-auto w-50 p-3 shadow" method="post">
-    <h3 class="text-center">Kaydol</h3>
-    <div class="form-group">
-        <label asp-for="Name">Ad :</label>
-        <span asp-validation-for="Name" class="text-danger"></span>
-        <input type="text" asp-for="Name" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="SurName">Soyad :</label>
-        <span asp-validation-for="SurName" class="text-danger"></span>
-        <input type="text" asp-for="SurName" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Password">Parola :</label>
-        <span asp-validation-for="Password" class="text-danger"></span>
-        <input type="password" asp-for="Password" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="ConfirmPassword">Parola Onay :</label>
-        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-        <input type="password" asp-for="ConfirmPassword" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="UserName">Kullanıcı Adı :</label>
-        <span asp-validation-for="UserName" class="text-danger"></span>
-        <input type="text" asp-for="UserName" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Email">Email :</label>
-        <span asp-validation-for="Email" class="text-danger"></span>
-        <input asp-for="Email" class="form-control" />
-    </div>
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-    <a asp-action="Index" class="btn btn-warning">Vazgeç</a>
-    <button class="btn btn-info" type="submit">Kayıt Ol</button>
-
-</form>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input asp-for="Email" class="form__input" placeholder="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-md-12">
+                <a asp-action="Index" class="btn btn-warning" style="width: 47%;">Vazgeç</a>
+                <button class="btn btn-info" type="submit" style="width: 47%;">Kayıt Ol</button>
+            </div>
+        </div>
+    </form>
+</div>

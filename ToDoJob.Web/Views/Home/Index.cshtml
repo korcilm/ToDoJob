@@ -15,7 +15,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="text-center p-2">LogIn</h2>
+                        <h2 class="text-center p-2">Giriş</h2>
                     </div>
 
                 </div>
@@ -23,25 +23,25 @@
                     <form asp-action="SignIn" method="post" class="w-100">
                         <div class="row mt-3">
                             <span asp-validation-for="UserName" class="text-danger"></span>
-                            <input asp-for="UserName" type="text" name="username" id="username" class="form__input" placeholder="Username">
+                            <input asp-for="UserName" type="text" name="username" id="username" class="form__input" placeholder="Kullanıcı adı">
                         </div>
                         <div class="row mt-3">
                             <span asp-validation-for="Password" class="text-danger"></span>
-                            <input asp-for="Password" type="password" name="password" id="password" class="form__input" placeholder="Password">
+                            <input asp-for="Password" type="password" name="password" id="password" class="form__input" placeholder="Parola">
                         </div>
                         <div class="row mt-3 ml-2">
                             <input type="checkbox" asp-for="RememberMe" class="form-check-input ">
-                            <label asp-for="RememberMe">Remember Me!</label>
+                            <label asp-for="RememberMe">Beni hatırla!</label>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <input type="submit" value="Submit" class="btn mx-auto">
+                                <input type="submit" value="Giriş Yap" class="btn mx-auto">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="row">
-                    <p>Don't have an account?  <a asp-action="SignUp" class="text-decoration-none p-2">Hesap Oluştur</a></p>
+                    <p>Hesabın yok mu?  <a asp-action="SignUp" class="text-decoration-none p-2">Hesap Oluştur</a></p>
                 </div>
             </div>
         </div>
