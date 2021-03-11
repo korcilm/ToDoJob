@@ -1,4 +1,3 @@
-![todoJob](https://user-images.githubusercontent.com/58364191/110791397-36ffea00-8283-11eb-9e38-4b3ba6083c31.png)
 # ToDoJob
 
 ## Table of contents
