@@ -16,11 +16,18 @@ Project is created with:
 * AutoMapper
 
 ## Views
-* ![todoJob](https://user-images.githubusercontent.com/58364191/110790179-c4dad580-8281-11eb-93ec-0463435adf49.png) 
+#### Manager
+* ![home](https://user-images.githubusercontent.com/58364191/110793346-90691880-8285-11eb-9379-756cd6c617fb.PNG)
+* ![job](https://user-images.githubusercontent.com/58364191/110793359-94953600-8285-11eb-9414-82cb4a7d094e.PNG)
+* ![iş emri](https://user-images.githubusercontent.com/58364191/110793442-abd42380-8285-11eb-840f-e497cc9d41ab.PNG)
+* ![grafik](https://user-images.githubusercontent.com/58364191/110793456-b098d780-8285-11eb-97f1-5bcf24f6d393.PNG)
+* ![profil](https://user-images.githubusercontent.com/58364191/110793481-b7274f00-8285-11eb-86c2-8aa50456ecfc.PNG)
 
-* ![todoJob](https://user-images.githubusercontent.com/58364191/110791408-3d8e6180-8283-11eb-9bc4-df32e1af9493.png)
 
-* ![todoJob](https://user-images.githubusercontent.com/58364191/110791111-e1c3d880-8282-11eb-9fdb-d286ee3abedf.png)
+#### Employee
+* ![memberhome](https://user-images.githubusercontent.com/58364191/110793930-3a48a500-8286-11eb-8c9f-28a38ba36fae.PNG)
+* ![gelen member](https://user-images.githubusercontent.com/58364191/110793938-3caaff00-8286-11eb-92fa-4a417d1ca5a8.PNG)
+* ![tamamlaanna](https://user-images.githubusercontent.com/58364191/110793947-3fa5ef80-8286-11eb-9920-2a08814522b8.PNG)
 
  
  
