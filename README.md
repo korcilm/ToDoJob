@@ -15,7 +15,7 @@ Project is created with:
 * MSSQL
 * AutoMapper
 
-<img ![todoJob](https://user-images.githubusercontent.com/58364191/110790179-c4dad580-8281-11eb-93ec-0463435adf49.png) />
+ ![todoJob](https://user-images.githubusercontent.com/58364191/110790179-c4dad580-8281-11eb-93ec-0463435adf49.png) 
 
 
  
