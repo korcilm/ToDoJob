@@ -17,7 +17,9 @@ Project is created with:
 
 ## Views
 * ![todoJob](https://user-images.githubusercontent.com/58364191/110790179-c4dad580-8281-11eb-93ec-0463435adf49.png) 
-* ![todoJob](https://user-images.githubusercontent.com/58364191/110790823-8eea2100-8282-11eb-82c5-03079ea75a00.png)
+* ![todoJob](https://user-images.githubusercontent.com/58364191/110790964-b6d98480-8282-11eb-8ef2-4a5c0eddc45e.png)
+* ![todoJob](https://user-images.githubusercontent.com/58364191/110791111-e1c3d880-8282-11eb-9fdb-d286ee3abedf.png)
+
  
  
 
